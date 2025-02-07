@@ -274,7 +274,7 @@ sleep_time <- sleep_time %>%
 ```
 
 ``` r
-# I will now format all date-time columns across all datasets:
+# I changed the format for date-time columns across all datasets:
 daily_activity$date = as.POSIXct(daily_activity$date, format = "%m/%d/%Y")
 daily_steps$date = as.POSIXct(daily_steps$date, format = "%m/%d/%Y")
 sleep_time$date = as.POSIXct(sleep_time$date, format = "%m/%d/%Y")
