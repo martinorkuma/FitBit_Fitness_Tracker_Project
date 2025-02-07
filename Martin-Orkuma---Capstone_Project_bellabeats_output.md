@@ -543,7 +543,8 @@ ggplot(data = merged_data) +
   labs(title = "Distribution of Daily Steps", x = "Total Steps", y = "Count")
 ```
 
-![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/plot%20of%20steps-1.png)<!-- -->
+![daily_steps](https://github.com/user-attachments/assets/e30fe953-077a-4831-952d-283ee03cfc59)
+
 
 #### Observations:
 
@@ -574,7 +575,8 @@ ggplot(data = merged_data) +
   labs(title = "Distribution of Active Time", x = "Total Active Minutes", y = "Count")
 ```
 
-![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/plot%20of%20active%20time-1.png)<!-- -->
+![active_time](https://github.com/user-attachments/assets/6c5642b1-6afd-4776-bcfe-56dd019d1767)
+
 
 #### Observations:
 
@@ -602,7 +604,8 @@ ggplot(merged_data, aes(x = totaltimeinbed, y = total_active_minutes)) +
 
     ## `geom_smooth()` using formula = 'y ~ x'
 
-![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![active_time_vs_bed_time](https://github.com/user-attachments/assets/07adbb72-89aa-4d4e-a8b7-22daf394f8c7)
+
 
 #### Observations:
 
@@ -630,7 +633,8 @@ ggplot(data = merged_data, aes(x = total_active_minutes, y = calories)) +
 
     ## `geom_smooth()` using formula = 'y ~ x'
 
-![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/scatter%20plot%20showing%20active%20time%20and%20calories-1.png)<!-- -->
+![active_time_vs_calories](https://github.com/user-attachments/assets/c18f870e-73ec-4fe7-9750-0b3254a50334)
+
 
 #### Observations:
 
@@ -659,7 +663,8 @@ ggplot(data = merged_data, aes(x = totalminutesasleep, y = calories)) +
 
     ## `geom_smooth()` using formula = 'y ~ x'
 
-![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![Sleep_vs_calories](https://github.com/user-attachments/assets/a2ad2c47-49c0-443e-8f30-9ba77dc7a147)
+
 
 #### Observations:
 
@@ -669,6 +674,8 @@ ggplot(data = merged_data, aes(x = totalminutesasleep, y = calories)) +
   between 2,000 and 3,000 calories daily.
 - Some users showed very high calorie burn (\>4,000 calories) and
   varying sleep duration, likely indicating highly active individuals.
+
+
 
 ## **Key Findings and Recommendations.**
 
