@@ -9,6 +9,59 @@ The data obtained from the FitBit Fitness Tracker can be used to gain insights i
 ### Data Sources
 The dataset used in the analysis comes from the [FitBit Fitness Tracker Dataset](http://www.kaggle.com/datasets/arashnic/fitbit/data) created by [Mobius](http://www.kaggle.com/arashnic). The data was collected from 30 eligible FitBit users between 4/12/2016 and 5/12/2016, and it includes details about physical activity, heart rate, and sleep monitoring. This report will focus on daily activity level data, daily steps taken, and sleep time. I downloaded .csv copies of the three datasets in this analysis and conducted all analyses using R in RStudio.
 
+## **Exploratory Data Analysis.**
+In this section, I analyzed the usage activities of the 24 FitBit users in the following categories: 
+a. Daily activity trends analysis.
+b. Correlation analysis.
+
+### a. Daily Activity Trend Analysis (Daily Steps and Time Active)
+**Dsitribution of daily steps**
+```r
+# Plot showing the number of steps taken by users. 
+ggplot(data = merged_data) + 
+  geom_histogram(
+    mapping = aes(x = totalsteps), 
+    bins = 30, 
+    color = "black",
+    fill = "lightblue"
+  ) +
+  labs(title = "Distribution of Daily Steps", x = "Total Steps", y = "Count")
+```
+**Distribution of active time**
+```r
+# Plot showing the total active minutes among users.
+ggplot(data = merged_data) +
+  geom_histogram(mapping = aes(x = total_active_minutes), bins = 30, fill = "violet", color = "black") +
+  labs(title = "Distribution of Active Time", x = "Total Active Minutes", y = "Count")
+```
+
+### b. Correlation Analysis
+**Correlation between time spent in bed and total active time**
+```r
+# Correlation between time spent in bed and total active time:
+ggplot(merged_data, aes(x = totaltimeinbed, y = total_active_minutes)) +
+  geom_point(color = "purple", alpha = 0.6) +
+  geom_smooth(method = "lm", color = "red", se = TRUE) + 
+  labs(
+    title = "Correlation between Active Time and Time Spent in Bed",
+    x = "Time Spent in Bed (Min)",
+    y = "Active Time (min)"
+    )
+```
+**Correlation between Total Active Time and Calories burned**
+```r
+# Correlation between time spent asleep and calories
+ggplot(data = merged_data, aes(x = totalminutesasleep, y = calories)) +
+  geom_point(color = "brown") +  
+  geom_smooth(method = "lm", color = "blue", se = TRUE) +  # Trend line with confidence interval
+  labs(
+    title = "Correlation between Time Spent Asleep and Calories Burned",
+    x = "Time Spent Asleep (min)",
+    y = "Calories Burned (Cal)"
+  )
+```
+
+
 ## **Key Findings and Recommendations.**
 ### Trends in FitBit Usage.
 #### Physical Activity:
