@@ -27,6 +27,13 @@ ggplot(data = merged_data) +
   ) +
   labs(title = "Distribution of Daily Steps", x = "Total Steps", y = "Count")
 ```
+
+**Output:** 
+
+![daily_steps](https://github.com/user-attachments/assets/e9ba765a-8ddf-418a-b12e-86891d3c74ee)
+
+
+
 **Distribution of active time**
 ```r
 # Plot showing the total active minutes among users.
@@ -34,6 +41,11 @@ ggplot(data = merged_data) +
   geom_histogram(mapping = aes(x = total_active_minutes), bins = 30, fill = "violet", color = "black") +
   labs(title = "Distribution of Active Time", x = "Total Active Minutes", y = "Count")
 ```
+
+**Output:**
+
+![active_time](https://github.com/user-attachments/assets/43a3d91f-9683-4879-8bcc-6f76c49dae97)
+
 
 ### b. Correlation Analysis
 **Correlation between time spent in bed and total active time**
@@ -48,6 +60,12 @@ ggplot(merged_data, aes(x = totaltimeinbed, y = total_active_minutes)) +
     y = "Active Time (min)"
     )
 ```
+
+**Output:**
+
+![active_time_vs_bed_time](https://github.com/user-attachments/assets/b38b885d-77c6-48a7-8ae4-029824b86721)
+
+
 **Correlation between Total Active Time and Calories burned**
 ```r
 # Correlation between time spent asleep and calories
@@ -60,6 +78,11 @@ ggplot(data = merged_data, aes(x = totalminutesasleep, y = calories)) +
     y = "Calories Burned (Cal)"
   )
 ```
+
+**Output:**
+
+![active_time_vs_calories](https://github.com/user-attachments/assets/137bd1b8-bbbc-45ec-9302-fc88c781e715)
+
 
 
 ## **Key Findings and Recommendations.**
