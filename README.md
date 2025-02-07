@@ -26,11 +26,11 @@ The dataset used in the analysis comes from the [FitBit Fitness Tracker Dataset]
 - Such inactivity does not seem to sufficiently result in time spent sleeping or in bed.
 
 ### Recommendations.
-- **Create personalized goals:** Based on data from FitBit users, creating personalized fitness and activity goals may serve as a guide for users to follow. Using insights from this analysis, we can use 10,000 daily steps and 200 daily active minutes as defaults. 
-- **Set goals reminders:** Use reminders to encourage/motivate users to work on accomplishing the goals they have set. 
-- **Incorporate Machine Learning:** Use machine learning to generate personalized activity and sleep recommendations based on each user's data trends. This ensures that recommendations change according to usage. 
-- **Sleep efficiency:** Add a tracker to distinguish between time spent in bed and actual sleep time. This system should also provide feedback, providing personalized suggestions to users with excessive time in bed (>10 hours) to improve their sleep quality and reduce sedentary behavior.
-- **Data visualization:** Providing catchy dashboards will allow users track their activity, including steps, active minutes, calories burned and sleep. This dashboard should also show progress towards their stated goal for each category.
+- Create personalized goals: Based on data from FitBit users, creating personalized fitness and activity goals may serve as a guide for users to follow. Using insights from this analysis, we can use 10,000 daily steps and 200 daily active minutes as defaults. 
+- Set goals reminders: Use reminders to encourage/motivate users to work on accomplishing the goals they have set. 
+- Incorporate Machine Learning: Use machine learning to generate personalized activity and sleep recommendations based on each user's data trends. This ensures that recommendations change according to usage. 
+- Sleep efficiency: Add a tracker to distinguish between time spent in bed and actual sleep time. This system should also provide feedback, providing personalized suggestions to users with excessive time in bed (>10 hours) to improve their sleep quality and reduce sedentary behavior.
+- Data visualization: Providing catchy dashboards will allow users track their activity, including steps, active minutes, calories burned and sleep. This dashboard should also show progress towards their stated goal for each category.
 
 ### References
 - Deguenon, Rodrigue (2024). [Capstone Project: Bellabeat](https://www.kaggle.com/rodriguedeguenon)
