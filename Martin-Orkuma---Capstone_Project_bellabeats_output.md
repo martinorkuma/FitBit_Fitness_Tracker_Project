@@ -1,6 +1,14 @@
 FitBit Fitness Tracker Data - Google Data Analytics Capstone
 ================
 
+- [**Introduction.**](#introduction)
+- [**Preparing the R Environment**](#preparing-the-r-environment)
+- [**Processing the Data.**](#processing-the-data)
+- [**Analyze the Date.**](#analyze-the-date)
+- [**Exploratory Data Analysis.**](#exploratory-data-analysis)
+- [**Key Findings and
+  Recommendations.**](#key-findings-and-recommendations)
+
 ## **Introduction.**
 
 This report analyzes consumers’ activity levels and usage habits of
@@ -22,14 +30,14 @@ Dataset](http://www.kaggle.com/datasets/arashnic/fitbit/data) created by
 eligible FitBit users between 4/12/2016 and 5/12/2016, and it includes
 details about physical activity, heart rate, and sleep monitoring. This
 report will focus on daily activity level data, daily steps taken, and
-sleep time. I downloaded .csv copies of the four datasets in this
+sleep time. I downloaded .csv copies of the three datasets in this
 analysis and conducted all analyses using R in RStudio.
 
 ## **Preparing the R Environment**
 
 ### Loading Required R Packages
 
-I will begin by loading the required R packages into the environment:
+I began by loading the required R packages into the environment:
 
 ``` r
 library(tidyverse)
@@ -68,7 +76,7 @@ library(readr)
 The next step will be to load all four datasets used in this analysis.
 
 ``` r
-# I am loading the datasets from the downloaded .csv files
+# I loaded the datasets from the downloaded .csv files
 daily_activity <- read.csv("daily_activity_merged.csv", stringsAsFactors = FALSE)
 daily_steps <- read.csv("dailySteps_merged.csv", stringsAsFactors = FALSE)
 sleep_time <- read.csv("sleepDay_merged.csv", stringsAsFactors = FALSE)
@@ -174,8 +182,8 @@ glimpse(sleep_time)
 
 ### Data Cleaning and Manipulation
 
-The first step is to inspect the dataset. I am checking for missing
-values in each dataset.
+The first step is to inspect the dataset. I did this by checking for
+missing values in each dataset.
 
 ``` r
 print("Count of total missing values in daily_activity")
@@ -215,7 +223,7 @@ sum(is.na(sleep_time))
 
 Notice that there are no more missing values across all three datasets.
 
-Next, I want to rename the column names in the dataset to match naming
+I then renamed the column names in the dataset to match naming
 conventions.
 
 ``` r
@@ -249,8 +257,7 @@ colnames(sleep_time)
     ## [1] "id"                 "sleepday"           "totalsleeprecords" 
     ## [4] "totalminutesasleep" "totaltimeinbed"
 
-To ensure uniformity, I will rename the ‘date’ columns in each dataset
-so they all correspond:
+I renamed the ‘date’ columns in each dataset To ensure uniformity:
 
 ``` r
 # I am using the rename() function to rename the date columns. 
@@ -274,7 +281,7 @@ sleep_time <- sleep_time %>%
 ```
 
 ``` r
-# I changed the format for date-time columns across all datasets:
+# I will now format all date-time columns across all datasets:
 daily_activity$date = as.POSIXct(daily_activity$date, format = "%m/%d/%Y")
 daily_steps$date = as.POSIXct(daily_steps$date, format = "%m/%d/%Y")
 sleep_time$date = as.POSIXct(sleep_time$date, format = "%m/%d/%Y")
@@ -343,8 +350,8 @@ head(sleep_time)
     ## 5            712
     ## 6            320
 
-To conclude the data cleaning process, I will now check for missing
-values following the column separation.
+To conclude the data cleaning process, I checked for missing values
+following the column separation.
 
 ``` r
 # I am using the is.na function to check for missing values.
@@ -381,7 +388,7 @@ consumer IDs are reported in each of the datasets.
 
     ## [1] 24
 
-Next, I will examine the summary statistics of the three datasets: daily
+I then examined the summary statistics of the three datasets: daily
 activity, daily steps, and sleep time.
 
 ``` r
@@ -513,14 +520,14 @@ merged_data$moderatelyactivedistance <- as.integer(merged_data$moderatelyactived
 
 ## **Exploratory Data Analysis.**
 
-In this section, I will analyze the usage activities of the 24 FitBit
-users in the following categories:
+In this section, I analyzed the usage activities of the 24 FitBit users
+in the following categories:
 
-1.  Activity level.
+1.  Daily activity trends analysis.
 
 2.  Correlation analysis.
 
-### a. Activity Level (Daily Steps and Time Active)
+### a. Daily Activity Trend Analysis (Daily Steps and Time Active)
 
 #### Distribution of Daily Steps:
 
@@ -537,10 +544,14 @@ ggplot(data = merged_data) +
 ```
 
 ![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/plot%20of%20steps-1.png)<!-- -->
-\#### Observations: - The chart shows a roughly normal distribution,
-with most users taking around 10,000 steps daily. - A majority of users
-take between 8,000 and 12,000 steps daily. - There are several of
-outliers near 0 steps and others with above 20,000 steps.
+
+#### Observations:
+
+- The chart shows a roughly normal distribution, with most users taking
+  around 10,000 steps daily.
+- A majority of users take between 8,000 and 12,000 steps daily.
+- There are several of outliers near 0 steps and others with above
+  20,000 steps.
 
 #### Distribution of active time:
 
@@ -553,7 +564,7 @@ merged_data <- merged_data %>%
   mutate(total_active_minutes = veryactiveminutes + fairlyactiveminutes + lightlyactiveminutes)
 ```
 
-Now, I will create a plot showing the distribution of active time among
+Next, I created a plot showing the distribution of active time among
 users.
 
 ``` r
@@ -564,11 +575,14 @@ ggplot(data = merged_data) +
 ```
 
 ![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/plot%20of%20active%20time-1.png)<!-- -->
-\#### Observations: - The charts shows a bell-shaped (normal)
-distribution, with most users falling between 150 and 250 minutes. - The
-most common range is between 200 and 250 minutes a day. - There are
-significant outliers, with as little as 0 active minutes and \> 400
-minutes a day.
+
+#### Observations:
+
+- The charts shows a bell-shaped (normal) distribution, with most users
+  falling between 150 and 250 minutes.
+- The most common range is between 200 and 250 minutes a day.
+- There are significant outliers, with as little as 0 active minutes and
+  \> 400 minutes a day.
 
 ### b. Correlation Analysis
 
@@ -617,13 +631,17 @@ ggplot(data = merged_data, aes(x = total_active_minutes, y = calories)) +
     ## `geom_smooth()` using formula = 'y ~ x'
 
 ![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/scatter%20plot%20showing%20active%20time%20and%20calories-1.png)<!-- -->
-\#### Observations: - The trend line shows a positive slope, indicating
-a direct relationship between daily active time and calories burned. As
-expected, increased activity, yields in more calories burned. - The
-scatter points are relatively close to the trend line, suggesting a
-moderate to strong positive correlation between active time and calories
-burned. - A majority of users cluster between 100 and 300 active minutes
-and burn between 2,000 and 3,500 calories daily.
+
+#### Observations:
+
+- The trend line shows a positive slope, indicating a direct
+  relationship between daily active time and calories burned. As
+  expected, increased activity, yields in more calories burned.
+- The scatter points are relatively close to the trend line, suggesting
+  a moderate to strong positive correlation between active time and
+  calories burned.
+- A majority of users cluster between 100 and 300 active minutes and
+  burn between 2,000 and 3,500 calories daily.
 
 #### Correlation between Time Spent Asleep and Calories burned:
 
@@ -642,12 +660,15 @@ ggplot(data = merged_data, aes(x = totalminutesasleep, y = calories)) +
     ## `geom_smooth()` using formula = 'y ~ x'
 
 ![](Martin-Orkuma---Capstone_Project_bellabeats_output_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
-\#### Observations: - The trend line is nearly horizontal, suggesting no
-significant correlation between time spent asleep and calories burned. -
-The majority of users slept for between 400 and 600 minutes and burned
-between 2,000 and 3,000 calories daily. - Some users showed very high
-calorie burn (\>4,000 calories) and varying sleep duration, likely
-indicating highly active individuals.
+
+#### Observations:
+
+- The trend line is nearly horizontal, suggesting no significant
+  correlation between time spent asleep and calories burned.
+- The majority of users slept for between 400 and 600 minutes and burned
+  between 2,000 and 3,000 calories daily.
+- Some users showed very high calorie burn (\>4,000 calories) and
+  varying sleep duration, likely indicating highly active individuals.
 
 ## **Key Findings and Recommendations.**
 
